@@ -5,11 +5,11 @@ from subprocess import check_output
 from time import sleep
 
 
-UPPER_TEMP_LEVEL = 60.0
-LOWER_TEMP_LEVEL = 51.0
+UPPER_TEMP_LEVEL = 65.0
+LOWER_TEMP_LEVEL = 55.0
 FAN_CONTROL_PIN_NUMBER = 40
 SLEEP_INTERVAL = 10
-
+EX_FAN_CONTROL_PIN_NUMBER = 37
 
 def get_cpu_temp():
     def __get_temp__internal():
@@ -25,16 +25,21 @@ def get_cpu_temp():
 
 def turn_off_fan():
     GPIO.output(FAN_CONTROL_PIN_NUMBER, False)
+    GPIO.output(EX_FAN_CONTROL_PIN_NUMBER, False)
 
 
 def turn_on_fan():
     GPIO.output(FAN_CONTROL_PIN_NUMBER, True)
+    GPIO.output(EX_FAN_CONTROL_PIN_NUMBER, True)
 
 
 def setup_fan():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(FAN_CONTROL_PIN_NUMBER, GPIO.OUT)
     GPIO.output(FAN_CONTROL_PIN_NUMBER, False)
+
+    GPIO.setup(EX_FAN_CONTROL_PIN_NUMBER, GPIO.OUT)
+    GPIO.output(EX_FAN_CONTROL_PIN_NUMBER, False)
 
 
 def main():
@@ -58,3 +63,4 @@ def main():
 
 sleep(SLEEP_INTERVAL)
 main()
+

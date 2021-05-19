@@ -6,8 +6,8 @@ from time import sleep
 
 FAN_CONTROL_PIN_NUMBER = 37
 
-TURN_ON_FOR_SEC = 2 * 60
-TURN_OFF_FOR_SEC = 30 * 60
+TURN_ON_FOR_SEC = 30 
+TURN_OFF_FOR_SEC = 60 * 60
 
 
 def turn_off_fan():
